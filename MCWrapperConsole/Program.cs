@@ -124,5 +124,22 @@ namespace MCWrapperConsole
             //
             // Questions? Use my contact form at https://ryangoodwin.dev (Hint: it's at the bottom of the page).
         }
+
+        // Expected Console output, same value may differ slightly or entirely
+        //
+        // Chain: main
+        // ChainName: ExampleChain
+        // Description: MultiChain ExampleChain
+        // Protocol: multichain
+        // SetupBlocks: 60
+        // ReIndex: False
+        // Blocks: 2
+        // Headers: 2
+        // BestBlockHash: 007c75caba6f82a6b4f9773a0c147f3da457fe086b19849711bf3d2713bf877c
+        // Difficulty: 5.9604645E-08
+        // VerificationProgress: 1
+        // Chainwork: 0000000000000000000000000000000000000000000000000000000000000300
+        // ChainRewards: 0
+        //
     }
 }
