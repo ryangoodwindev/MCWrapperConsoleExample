@@ -125,7 +125,7 @@ namespace MCWrapperConsole
             // Questions? Use my contact form at https://ryangoodwin.dev (Hint: it's at the bottom of the page).
         }
 
-        // Expected Console output, same value may differ slightly or entirely
+        // Expected Console output, some values may differ slightly or entirely
         //
         // Chain: main
         // ChainName: ExampleChain
