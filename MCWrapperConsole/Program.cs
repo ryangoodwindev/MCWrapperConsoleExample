@@ -64,7 +64,7 @@ namespace MCWrapperConsole
         /// <summary>
         /// MCWrapper Command Line Interface (Cli) factory serves up all available CliClient services. Included in the package at, MCWrapper.CLI.Ledger.Clients
         /// </summary>
-        private static readonly CliClientFactory _factory = ServicePipelineHelper.GetService<CliClientFactory>();
+        private static readonly IMultiChainCliClientFactory _factory = ServicePipelineHelper.GetService<IMultiChainCliClientFactory>();
 
         /// <summary>
         /// Program entry point.
@@ -83,7 +83,7 @@ namespace MCWrapperConsole
             //
             // Note: To increase stability a 'blockchainName' parameter is always required by the ForgeClient.CreateBlockchainAsync() method.
             //
-            var create = await _factory.ForgeClient.CreateBlockchainAsync(blockchainName: BLOCKCHAIN_NAME);
+            var create = await _factory.MultiChainCliForgeClient.CreateBlockchainAsync(blockchainName: BLOCKCHAIN_NAME);
             if (!create.Success)
                 throw new ServiceException($"Unable to create blockchain"); // custom exception included in package at, MCWrapper.Ledger.Entities.ErrorHandling.
 
@@ -92,7 +92,7 @@ namespace MCWrapperConsole
             //
             // Note: To increase stability a 'blockchainName' parameter is always required by the ForgeClient.StartBlockchainAsync() method.
             //
-            var start = await _factory.ForgeClient.StartBlockchainAsync(blockchainName: BLOCKCHAIN_NAME);
+            var start = await _factory.MultiChainCliForgeClient.StartBlockchainAsync(blockchainName: BLOCKCHAIN_NAME);
             if (!start.Success)
                 throw new ServiceException($"Unable to start blockchain"); // custom exception included in package at, MCWrapper.Ledger.Entities.ErrorHandling.
 
@@ -106,7 +106,7 @@ namespace MCWrapperConsole
             //
             // Example of an inferred method: var info = await _factory.BlockchainCliClient.GetBlockchainInfoAsync();
             //
-            var info = await _factory.BlockchainCliClient.GetBlockchainInfoAsync(blockchainName: BLOCKCHAIN_NAME);
+            var info = await _factory.MultiChainCliGeneralClient.GetBlockchainInfoAsync(blockchainName: BLOCKCHAIN_NAME);
             foreach (var prop in info.Result.GetType().GetProperties()) // reflect each property.
                 Console.WriteLine($"{prop.Name}: {prop.GetValue(info.Result)}"); // print each property Name and Value to Console.
 
@@ -115,7 +115,7 @@ namespace MCWrapperConsole
             //
             // Note: To increase stability a 'blockchainName' parameter is always required by the ForgeClient.StopBlockchainAsync() method.
             //
-            var stop = await _factory.ForgeClient.StopBlockchainAsync(BLOCKCHAIN_NAME);
+            var stop = await _factory.MultiChainCliForgeClient.StopBlockchainAsync(BLOCKCHAIN_NAME);
             if (!stop.Success)
                 throw new ServiceException($"Unable to stop blockchain"); // custom exception included in package at, MCWrapper.Ledger.Entities.ErrorHandling.
 
