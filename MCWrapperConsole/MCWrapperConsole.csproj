@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MCWrapper.CLI" Version="4.1.6" />
+    <PackageReference Include="MCWrapper.CLI" Version="4.1.12" />
   </ItemGroup>
 
   <ItemGroup>
